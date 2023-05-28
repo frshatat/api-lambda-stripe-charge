@@ -8,6 +8,7 @@ const AWS = require('aws-sdk'),
   stripeSecretKeyValue = ssm.getParameter({ Name: STRIPE_SECRET_KEY_NAME, WithDecryption: true });
 
 exports.handler = (event) => {
+  console.log('SSM_PARAMETER_PATH:', process.env.SSM_PARAMETER_PATH);
   if (event.httpMethod === 'OPTIONS') {
     return Promise.resolve(processResponse(IS_CORS));
   }
